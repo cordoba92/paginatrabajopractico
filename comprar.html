@@ -59,223 +59,203 @@
   <nav class="navbar">NAVBAR</nav>
   <aside class="sidebar">SIDEBAR</aside>
   <article class="main">
-    <header class="container-fluid bg-dark position-sticky top-0">
-      <ul
-        class="nav nav-pills mb-3 py-3 container"
-        id="pills-tab"
-        role="tablist"
-      >
-        <li class="nav-item text-primary" role="presentation">
-          <a
-            class="nav-link "
-            id="pills-home-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-home"
-            type="button"
-            role="tab"
-            aria-controls="pills-home"
-            aria-selected="true"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item" role="presentation">
-          <a
-            class="nav-link active"
-            id="pills-profile-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-profile"
-            type="button"
-            role="tab"
-            aria-controls="pills-profile"
-            aria-selected="false"
-            >Productos</a
-          >
-        </li>
-        <li class="nav-item" role="presentation">
-          <a
-            class="nav-link"
-            id="pills-contact-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-contact"
-            type="button"
-            role="tab"
-            aria-controls="pills-contact"
-            aria-selected="false"
-            >Carrito</a
-          >
-        </li>
-      </ul>
-    </header>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Variables
+        const baseDeDatos = [
+            {
+                id: 1,
+                nombre: 'Pizza',
+                precio: 1,
+                imagen: 'imagenes/platillo1.jpg'
+            },
+            {
+                id: 2,
+                nombre: 'Cebolla',
+                precio: 1.2,
+                imagen: 'imagenes/platillo2.jpg'
+            },
+            {
+                id: 3,
+                nombre: 'Calabacin',
+                precio: 2.1,
+                imagen: 'imagenes/platillo3.jpg'
+            },
+            {
+                id: 4,
+                nombre: 'Fresas',
+                precio: 0.6,
+                imagen: 'imagenes/platillo4.jpg'
+            }
 
-    <div class="alert container position-sticky top-0 alert-primary hide" role="alert">
-    Producto Añadido al carrito!
-    </div>
-    <div class="alert container position-sticky top-0 alert-danger remove" role="alert">
-      Producto removido!
-    </div>
+        ];
 
-    <div class="tab-content" id="pills-tabContent">
-      <div
-        class="tab-pane fade "
-        id="pills-home"
-        role="tabpanel"
-        aria-labelledby="pills-home-tab"
-      >
-        1
+        let carrito = [];
+        const divisa = '$';
+        const DOMitems = document.querySelector('#items');
+        const DOMcarrito = document.querySelector('#carrito');
+        const DOMtotal = document.querySelector('#total');
+        const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+
+        // Funciones
+
+        /**
+        * Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
+        */
+        function renderizarProductos() {
+            baseDeDatos.forEach((info) => {
+                // Estructura
+                const miNodo = document.createElement('div');
+                miNodo.classList.add('card', 'col-sm-4');
+                // Body
+                const miNodoCardBody = document.createElement('div');
+                miNodoCardBody.classList.add('card-body');
+                // Titulo
+                const miNodoTitle = document.createElement('h5');
+                miNodoTitle.classList.add('card-title');
+                miNodoTitle.textContent = info.nombre;
+                // Imagen
+                const miNodoImagen = document.createElement('img');
+                miNodoImagen.classList.add('img-fluid');
+                miNodoImagen.setAttribute('src', info.imagen);
+                // Precio
+                const miNodoPrecio = document.createElement('p');
+                miNodoPrecio.classList.add('card-text');
+                miNodoPrecio.textContent = `${info.precio}${divisa}`;
+                // Boton 
+                const miNodoBoton = document.createElement('button');
+                miNodoBoton.classList.add('btn', 'btn-primary');
+                miNodoBoton.textContent = '+';
+                miNodoBoton.setAttribute('marcador', info.id);
+                miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
+                // Insertamos
+                miNodoCardBody.appendChild(miNodoImagen);
+                miNodoCardBody.appendChild(miNodoTitle);
+                miNodoCardBody.appendChild(miNodoPrecio);
+                miNodoCardBody.appendChild(miNodoBoton);
+                miNodo.appendChild(miNodoCardBody);
+                DOMitems.appendChild(miNodo);
+            });
+        }
+
+        /**
+        * Evento para añadir un producto al carrito de la compra
+        */
+        function anyadirProductoAlCarrito(evento) {
+            // Anyadimos el Nodo a nuestro carrito
+            carrito.push(evento.target.getAttribute('marcador'))
+            // Actualizamos el carrito 
+            renderizarCarrito();
+
+        }
+
+        /**
+        * Dibuja todos los productos guardados en el carrito
+        */
+        function renderizarCarrito() {
+            // Vaciamos todo el html
+            DOMcarrito.textContent = '';
+            // Quitamos los duplicados
+            const carritoSinDuplicados = [...new Set(carrito)];
+            // Generamos los Nodos a partir de carrito
+            carritoSinDuplicados.forEach((item) => {
+                // Obtenemos el item que necesitamos de la variable base de datos
+                const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                    // ¿Coincide las id? Solo puede existir un caso
+                    return itemBaseDatos.id === parseInt(item);
+                });
+                // Cuenta el número de veces que se repite el producto
+                const numeroUnidadesItem = carrito.reduce((total, itemId) => {
+                    // ¿Coincide las id? Incremento el contador, en caso contrario no mantengo
+                    return itemId === item ? total += 1 : total;
+                }, 0);
+                // Creamos el nodo del item del carrito
+                const miNodo = document.createElement('li');
+                miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
+                miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
+                // Boton de borrar
+                const miBoton = document.createElement('button');
+                miBoton.classList.add('btn', 'btn-danger', 'mx-5');
+                miBoton.textContent = 'X';
+                miBoton.style.marginLeft = '1rem';
+                miBoton.dataset.item = item;
+                miBoton.addEventListener('click', borrarItemCarrito);
+                // Mezclamos nodos
+                miNodo.appendChild(miBoton);
+                DOMcarrito.appendChild(miNodo);
+            });
+           // Renderizamos el precio total en el HTML
+           DOMtotal.textContent = calcularTotal();
+        }
+
+        /**
+        * Evento para borrar un elemento del carrito
+        */
+        function borrarItemCarrito(evento) {
+            // Obtenemos el producto ID que hay en el boton pulsado
+            const id = evento.target.dataset.item;
+            // Borramos todos los productos
+            carrito = carrito.filter((carritoId) => {
+                return carritoId !== id;
+            });
+            // volvemos a renderizar
+            renderizarCarrito();
+        }
+
+        /**
+         * Calcula el precio total teniendo en cuenta los productos repetidos
+         */
+        function calcularTotal() {
+            // Recorremos el array del carrito 
+            return carrito.reduce((total, item) => {
+                // De cada elemento obtenemos su precio
+                const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                    return itemBaseDatos.id === parseInt(item);
+                });
+                // Los sumamos al total
+                return total + miItem[0].precio;
+            }, 0).toFixed(2);
+        }
+
+        /**
+        * Varia el carrito y vuelve a dibujarlo
+        */
+        function vaciarCarrito() {
+            // Limpiamos los productos guardados
+            carrito = [];
+            // Renderizamos los cambios
+            renderizarCarrito();
+        }
+
+        // Eventos
+        DOMbotonVaciar.addEventListener('click', vaciarCarrito);
+
+        // Inicio
+        renderizarProductos();
+        renderizarCarrito();
+      });
+  </script>
+</head>
+<body>
+  <div class="container">
+      <div class="row">
+          <!-- Elementos generados a partir del JSON -->
+          <main id="items" class="col-sm-8 row"></main>
+          <!-- Carrito -->
+          <aside class="col-sm-4">
+              <h2>Carrito</h2>
+              <!-- Elementos del carrito -->
+              <ul id="carrito" class="list-group"></ul>
+              <hr>
+              <!-- Precio total -->
+              <p class="text-right">Total: <span id="total"></span>$;</p>
+              <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+          </aside>
       </div>
-      <div
-        class="tab-pane fade show active container"
-        id="pills-profile"
-        role="tabpanel"
-        aria-labelledby="pills-profile-tab"
-      >
-        <h2 class="h4 m-4 text-primary">Productos</h2>
-
-        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-
-          <div class="col d-flex justify-content-center mb-4">
-            <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
-              <h5 class="card-title pt-2 text-center text-primary">Hamburguesa Completa</h5>
-              <img src="./imagenes/platillo1.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="text-primary">Precio: <span class="precio">$ 400</span></h5>
-                <div class="d-grid gap-2">
-                <button  class="btn btn-primary button">Añadir a Carrito</button>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-center mb-4">
-            <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
-              <h5 class="card-title pt-2 text-center text-primary">Card title 2</h5>
-              <img src="./imagenes/platillo2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="text-primary">Precio: <span class="precio">$ 5</span></h5>
-                <div class="d-grid gap-2">
-                <button  class="btn btn-primary button">Añadir a Carrito</button>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-center mb-4">
-            <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
-              <h5 class="card-title pt-2 text-center text-primary">Card title 3</h5>
-              <img src="./imagenes/platillo3.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="text-primary">Precio: <span class="precio">$ 5</span></h5>
-                <div class="d-grid gap-2">
-                <button  class="btn btn-primary button">Añadir a Carrito</button>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-center mb-4">
-            <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
-              <h5 class="card-title pt-2 text-center text-primary">Card title 4</h5>
-              <img src="./imagenes/platillo4.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="text-primary">Precio: <span class="precio">$ 5</span></h5>
-                <div class="d-grid gap-2">
-                <button  class="btn btn-primary button">Añadir a Carrito</button>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-center mb-4">
-            <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
-              <h5 class="card-title pt-2 text-center text-primary">Card title 5</h5>
-              <img src="./imagenes/platillo5.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="text-primary">Precio: <span class="precio">$ 5</span></h5>
-                <div class="d-grid gap-2">
-                <button  class="btn btn-primary button">Añadir a Carrito</button>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-center mb-4">
-            <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
-              <h5 class="card-title pt-2 text-center text-primary">Card title 6</h5>
-              <img src="./imagenes/platillo1.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="text-primary">Precio: <span class="precio">$ 5</span></h5>
-                <div class="d-grid gap-2">
-                <button  class="btn btn-primary button">Añadir a Carrito</button>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-center mb-4">
-            <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
-              <h5 class="card-title pt-2 text-center text-primary">Card title 7</h5>
-              <img src="./imagenes/platillo2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="text-primary">Precio: <span class="precio">$ 5</span></h5>
-                <div class="d-grid gap-2">
-                <button  class="btn btn-primary button">Añadir a Carrito</button>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-center mb-4">
-            <div class="card shadow mb-1 bg-dark rounded" style="width: 20rem;">
-              <h5 class="card-title pt-2 text-center text-primary">Card title 8</h5>
-              <img src="./imagenes/platillo3.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text text-white-50 description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="text-primary">Precio: <span class="precio">$ 5</span></h5>
-                <div class="d-grid gap-2">
-                <button  class="btn btn-primary button">Añadir a Carrito</button>
-              </div>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-
-      </div>
-      <div
-        class="tab-pane fade carrito"
-        id="pills-contact"
-        role="tabpanel"
-        aria-labelledby="pills-contact-tab"
-      >
-      <br>
-      <table class="table table-dark table-hover">
-        <thead>
-          <tr class="text-primary">
-            <th scope="col">#</th>
-            <th scope="col">Productos</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Cantidad</th>
-          </tr>
-        </thead>
-        <tbody class="tbody">
-
-
-
-        </tbody>
-      </table>
-      <br><br>
-      <div class="row mx-4">
-        <div class="col">
-          <h3 class="itemCartTotal text-white">Total: 0</h3>
-        </div>
-        <div class="col d-flex justify-content-end">
-          <button class="btn btn-success">COMPRAR</button>
-        </div>
-      </div>
-
-      </div>
-    </div>
+  </div>
+  
+    
+  </article>
 
     <footer class="bg-dark p-3 mt-5">
       <p class="text-center m-0 text-muted"></p>
