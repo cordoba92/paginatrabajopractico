@@ -1,113 +1,171 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     
-    <title>Comidas Codo a Codo</title>
-    
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./css/estilos.css">
-    <script
-      src="https://kit.fontawesome.com/7e5b2d153f.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/index.js"></script>
-    
 
-  </head>
-  
-  <body class="grid-container">
+    <title>Pzzeria Codo a Codo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/app.css">
 
-    
-    <header class="header"><header class="header">
-      <nav class="nav">
-        <img src="./imagenes/logo.gif" alt="10px">
-          <ul class="nav-menu">
-            <li class="nav-menu-item">
-              <a href="index.html" class="nav-menu-link nav-link">INICIO</a>
-            </li>
-            
-            <li class="nav-menu-item">
-              <a href="contacto.html" class="nav-menu-link nav-link">CONTACTO</a>
-            </li>
-            <li class="nav-menu-item">
-              <a href="#contenedor3" class="nav-menu-link nav-link">DONDE ESTAMOS</a>
-            </li>
-            <li class="nav-menu-item">
-              <a href="comprar.html" class="nav-menu-link nav-link">COMPRAR</a>
-            </li>
-          </ul>
-            <a href="http://facebook.com"><img width="40" id="logofacebook" src="./imagenes/facebook.png" alt=""></a>
-            <a href="http://instagram.com"><img width="40" id="logoinstagram" src="./imagenes/instagram.png" alt=""></a>
-            <div id="tiempo"><!-- www.tutiempo.net - Ancho:96px - Alto:24px -->
-              <div id="TT_FiBwLBtxddd9CBeA7AVzzzzDD7lABEI">El tiempo - Tutiempo.net</div>
-              <script type="text/javascript" src="https://www.tutiempo.net/s-widget/l_FiBwLBtxddd9CBeA7AVzzzzDD7lABEI"></script>
-              
-          </div>
-        </nav>
-      </header>
-    </header>
-
-    <nav class="navbar"><img src="./imagenes/banner.jpg" alt=""></nav>
-
-    <aside class="sidebar"><img src="./imagenes/banner.jpg" alt=""></aside>
-
-    <article class="main"><!--CAJAS-->
-        <div id="contenedor">
-         <div id="caja1">
-            <img src="./imagenes/pizzas.jpg" alt="">
-            <p>PIZZAS</p></div>
- 
-         <div id="caja2">
-            <img src="./imagenes/menudiario.jpg" alt="">
-            <p>MENÚ DIARIO</p></div>
-         
- 
-        <div id="caja3">
-            <img src="./imagenes/sandwhiches.jpg" alt="">
-            <P>SANDWICHES</P></div>
- 
-            <div id="caja4">
-                <img src="./imagenes/empanadas.jpg" alt="">
-                <p>EMPANADAS</p>
-
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+            <div class="container">
                 
+                <a class="navbar-brand" href="#">
+                    <img src="img/el-rocoto-logo.png" alt="" class="img-fluid">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link active" href="index.html">INICIO <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#mapa">DONDE ESTAMOS</a>
+                    <a class="nav-item nav-link" href="comprar.html">COMPRAR</a>
+                    <a class="nav-item nav-link" href="contacto.html">CONTACTO</a>
+                  </div>
                 </div>
+                <div id="tiempo"><!-- www.tutiempo.net - Ancho:116px - Alto:36px -->
+                    <div id="TT_yiewrhdhdnnaMeGKKAVjjjjDjWaKT4SlLY1d1sy5KEz">El tiempo - Tutiempo.net</div>
+                    <script type="text/javascript" src="https://www.tutiempo.net/s-widget/l_yiewrhdhdnnaMeGKKAVjjjjDjWaKT4SlLY1d1sy5KEz"></script></div>
+                    <a href="http://facebook.com"><img width="40" id="logofacebook" src="./img/facebook.png" alt=""></a>
+        <a href="http://instagram.com"><img width="40" id="logoinstagram" src="./img/instagram.png" alt=""></a>    
+                </div>
+            </div>
+        </nav>
 
-                
+
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-sm-6 p-5">
+                    <p class="text-white" style="letter-spacing: 20px"> <b>PIZZERIA</b></p>
+                    <h1 class="text-right"><span class="display-3">CODO A CODO</span> <br> el gusto de estar juntos</h1>
+                    <p class="row justify-content-center align-items-center mt-5">
+                        <a href="https://api.whatsapp.com/send?phone=543548401179" class="btn-rocoto"><span>PEDIR DELIVERY</span></a>
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <img src="img/el-rocoto.png" alt="" class="img-fluid mx-auto d-block">
+                </div>                
+            </div>
+            <div class="card" style="background: white url(editables/bg-verde.png) bottom right no-repeat;">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-sm-7 border-right">
+                        <div class="p-5">
+                        <h2 class="text-center">BIENVENIDOS</h2> 
+                        <p class="text-justify">Pizzeria Codo a Codo es una familia, que busca ser feliz brindando alimentos de calidad y al precio adecuado</p> 
+                        <h3>RESERVAS</h3>
+                        <form action="">
+                            <div class="row form-group">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Nombre">  
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Celular">  
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="E-mail">  
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Dirección">  
+                                    </div>
+                            </div>
+                            <div class="row form-group">
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control" placeholder="Mensaje..."> </textarea> 
+                                    </div>                                   
+                            </div>
+                            <input type="submit" class="btn btn-success mx-auto d-block" value="ENVIAR">
+
+                        </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <img src="img/establecimiento.png" alt="" class="img-fluid mx-auto d-block">
+                    </div>                
+                </div> 
+            </div> 
+            <!-- PLATOS -->
+            <div class="row mt-5">
+                <div class="col-sm-4">
+                    <div class="card border-0 shadow-lg text-center bg-gradiente text-white">
+                        <img src="./img/promo1.png" alt="" class="card-img-top">
+                        <div class="card-body row justify-content-center align-items-center">
+                                <h4 class="text-white">COMBO 1</h4>
+                                <p>1 Pizza calabresa + 1 pizza napolitana</p>
+                                <div class="mx-auto d-block mb-n5 rounded-circle bg-white">
+                                    <h3 class="pt-3 pb-3 pr-2 pl-2 text-success text-center"><span class="small">$/</span>1400</h3>
+                                </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                        <div class="card border-0 shadow-lg text-center bg-gradiente text-white">
+                            <img src="./img/promo2.png" alt="" class="card-img-top">
+                            <div class="card-body row justify-content-center align-items-center">
+                                    <h4 class="text-white">COMBO 2</h4>
+                                    <p>1 Pizza de panceta + 1 pizza calabresa </p>
+                                    <div class="mx-auto d-block mb-n5 rounded-circle bg-white">
+                                        <h3 class="pt-3 pb-3 pr-2 pl-2 text-success text-center"><span class="small">$/</span>1500</h3>
+                                    </div>
+                            </div>
+                            
+                        </div>
+                </div>
+                    <div class="col-sm-4">
+                            <div class="card border-0 shadow-lg text-center bg-gradiente text-white">
+                                <img src="./img/promo3.png" alt="" class="card-img-top">
+                                <div class="card-body row justify-content-center align-items-center">
+                                        <h4 class="text-white">COMBO 3</h4>
+                                        <p>2 Pizzas de muzzarella para llevar</p>
+                                        <div class="mx-auto d-block mb-n5 rounded-circle bg-white">
+                                            <h3 class="pt-3 pb-3 pr-2 pl-2 text-success text-center"><span class="small">$/</span>1300</h3>
+                                        </div>
+                                </div>
+                                
+                            </div>
+                    </div>
+            </div>
+
+            <!-- PLATOS FIN -->
+            <!-- MAP -->
+            <br><br>
+            <div id="map">
+                <a href="index.html">Volver</a>
+            </div>
+            <div id="mapa" class="col-12 p-0 mt-5 mb-5">
+                <div class="card">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2922.789815289753!2d-64.48542268516842!3d-31.093204987804366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2sar!4v1664851132982!5m2!1ses-419!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <!-- MAP FIN -->
+
+            <div class="col-12">
+                <p class="h4 text-center text-warning">Avenida Eden 340 - La Falda - Córdoba <br>
+                        882312112 <br>
+                       pizzeriacodoacodo@email.com</p>
+            </div>
+
+            <div class="col-13">
+                <p>© 2022. Página de prueba Codo a Codo - Todos los derechos reservados.</p>
+            </div>
+
+
+
+           
             
+
             
-            </article>
-                <br>
-  
 
-  
-     
-     
-  
-
-               
-    <footer class="footer">
-        <div id="contenedor3">
-            <h3> DONDE ESTAMOS
-              <br>
-              <a href="index.html">Volver</a>
-             </h3>
-               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1702.3421820062445!2d-64.50093333475132!3d-31.42282130919488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1662002406675!5m2!1ses-419!2sar" width="1260" height="310" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          
-    </footer>
-
+        </div>
     
-
-
-  </body>
-  
-  </html>
+</body>
+</html>
