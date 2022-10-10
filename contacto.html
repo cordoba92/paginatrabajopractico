@@ -1,90 +1,119 @@
-<!DOCTYPE html>
-<html lang="es" class="h-100">
-<head>
+  <!DOCTYPE html>
+  <html lang="en">
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>EL ROCOTO</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/app.css">
-
-</head>
-<body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="img/el-rocoto-logo.png" alt="" class="img-fluid">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                  <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link active" href="index.html">INICIO <span class="sr-only">(current)</span></a>
-                    
-                    <a class="nav-item nav-link" href="comprar.html">COMPRAR</a>
-                    <a class="nav-item nav-link" href="contacto.html">CONTACTO</a>
-                  </div>
-                  <div id="tiempo"><!-- www.tutiempo.net - Ancho:116px - Alto:36px -->
-                    <div id="TT_yiewrhdhdnnaMeGKKAVjjjjDjWaKT4SlLY1d1sy5KEz">El tiempo - Tutiempo.net</div>
-                    <script type="text/javascript" src="https://www.tutiempo.net/s-widget/l_yiewrhdhdnnaMeGKKAVjjjjDjWaKT4SlLY1d1sy5KEz"></script></div>
-                    <a href="http://facebook.com"><img width="40" id="logofacebook" src="./img/facebook.png" alt=""></a>
-        <a href="http://instagram.com"><img width="40" id="logoinstagram" src="./img/instagram.png" alt=""></a> 
-                </div>
-
-            </div>
-        </nav>
-
-
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-sm-6 p-5">
-                    <p class="text-white" style="letter-spacing: 20px"> <b>PIZZERIA</b></p>
-                    <h1 class="text-right"><span class="display-3">CODO A CODO</span> <br> el gusto de estar juntos</h1>
-                    <p class="row justify-content-center align-items-center mt-5">
-                        <a href="" class="btn-rocoto"><span>PEDIR DELIVERY</span></a>
-                    </p>
-                </div>
-                <div class="col-sm-6">
-                    <img src="img/el-rocoto.png" alt="" class="img-fluid mx-auto d-block">
-                </div>                
-            </div>
-           
-            
-  <article class="main">
-    <div class="content"> 
-      <h1 class="logo"><img src="./imagenes/logo2.png" alt=""></h1>
-      <div class="contact-form ">
-          <h3>Contactanos</h3>
-          <form action="">
-              <p>
-                  <label>Nombre Completo</label>
-                  <input type="text" name=""fullname">
-                  <br>
-                  <br>
-                  <label>Mail</label>
-                  <input type="email" name=""Mail">
-                  <br><br>
-                  <label>Teléfono</label>
-                  <input type="number" name=""Teléfono">
-                  <br><br>
-                  <label>Contraseña</label>
-                  <input type="password" name=""Contraseña">
-                  <br>
-                  <br>
-                  <button type="submit">ENVIAR</button>
-      
-              </p>
-          </form>
-      
-        
-            
-
-            <div class="col-12">
-                <p>© 2022. Página de prueba Codo a Codo - Todos los derechos reservados.</p>
-            </div>
-
-        </div>
     
-</body>
-</html>
+    <title>Pizzeria Codo a Codo</title>
+        
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script src="./css/estilos.css"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    
+    <header class="header">
+       <img id="logoweb" src="./imagenes/el-rocoto-logo.png" alt="">
+      <div id="tiempo"><!-- www.tutiempo.net - Ancho:116px - Alto:36px -->
+        <div id="TT_yiewrhdhdnnaMeGKKAVjjjjDjWaKT4SlLY1d1sy5KEz">El tiempo - Tutiempo.net</div>
+        <script type="text/javascript" src="https://www.tutiempo.net/s-widget/l_yiewrhdhdnnaMeGKKAVjjjjDjWaKT4SlLY1d1sy5KEz"></script></div>
+        <a href="http://facebook.com"><img width="40" id="logofacebook" src="./imagenes/facebook.png" alt=""></a>
+  <a href="http://instagram.com"><img width="40" id="logoinstagram" src="./imagenes/instagram.png" alt=""></a> 
+    </div>
+      <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <img id="boton" src="./imagenes/boton.png" alt="10px">
+        </label>
+        <a href="#" class="enlace">
+            <img src="#" alt="" class="logo">
+        </a>
+        <ul>
+          
+            <li><a class="active" href="index.html">Inicio</a></li>
+            <li><a href="#contenedor3">Donde Estamos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="comprar.html">Comprar</a></li>
+            
+        </ul>
+    </nav>
+    </header>
+
+  </head>
+  
+  <body class="grid-container">
+
+    
+
+    <nav class="navbar">
+      <img id="foto1" src="./imagenes/local-1.jpg" alt="">
+      <h1 id="h1">BIENVENIDOS</h1>
+      <h2 id="h2">Pizzeria Codo a Codo es una familia, que busca ser feliz brindando alimentos de calidad y al precio adecuado</h2>
+
+      <img id="foto1" src="./imagenes/local-2.jpg" alt="">
+       </nav>
+
+          <article class="main">
+            <div class="content"> 
+                <h1 class="logo">Formulario Codo</h1>
+                <div class="contact-form ">
+                    <h3>Contactanos</h3>
+                    <form action="">
+                        <p>
+                            <label>Nombre Completo</label>
+                            <input type="text" name=""Nombre Completo">
+                            <br>
+                            <br>
+                            <label>Mail</label>
+                            <input type="email" name=""Mail">
+                            <br><br>
+                            <label>Teléfono</label>
+                            <input type="number" name=""Teléfono">
+                            <br><br>
+                            <label>Contraseña</label>
+                            <input type="password" name=""Contraseña">
+                            <br>
+                            <br>
+                            <button type="submit">ENVIAR</button>
+                
+                        </p>
+                    </form>
+                
+                
+                <div class="contact-info">
+                <H4>Mas Info</H4>
+                <ul>
+                    <li>Direccion</li>
+                    <li>Telefono</li>
+                    <li>contacto@gmail.com</li>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam quod iste repellendus eos impedit, soluta molestiae quis mollitia, doloribus amet earum obcaecati consequatur porro nemo pariatur, reprehenderit eligendi? Reiciendis, dolores.</p>
+                
+                
+                </ul>
+                </div>    
+                </div>
+          </article>
+    
+       
+
+    
+                <br>
+  
+
+  
+     
+     
+  
+
+               
+                <footer class="footer">
+                  <img id="foto2" src="./imagenes/combo1.jpg" alt="">
+                  <img id="foto2" src="./imagenes/combo1.jpg" alt="">
+                  <img id="foto2" src="./imagenes/combo1.jpg" alt="">
+                    <div id="contenedor3">
+                        <h3> DONDE ESTAMOS
+                          <br>
+                          <a href="index.html">Volver</a>
+                         </h3>
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2922.789815289753!2d-64.48542268516842!3d-31.093204987804366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2sar!4v1664851132982!5m2!1ses-419!2sar" width="100%" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            
+                </footer>
+            

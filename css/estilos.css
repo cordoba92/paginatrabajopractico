@@ -1,0 +1,281 @@
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+nav{
+  background: #080500;
+  height: 80px;
+  width: 100%;
+}
+.enlace{
+  position: absolute;
+  padding: 20px 50px;
+}
+.logo{
+  height: 40px;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+nav ul li a{
+  color: #fff;
+  font-size: 18px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+li a.active, li a:hover{
+  background: #f8501d;
+  transition: .5s;
+}
+.checkbtn{
+  font-size: 30px;
+  color: #fff;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+section{
+  background: url(fondo.jpg) no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh - 80px);
+}
+
+@media (max-width: 952px){
+  .enlace{
+      padding-left: 20px;
+  }
+  nav ul li a{
+      font-size: 16px;
+  }
+}
+
+@media (max-width: 858px){
+  .checkbtn{
+      display: block;
+  }
+  ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #2c3e50;
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+  }
+  nav ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+  }
+  nav ul li a{
+      font-size: 20px;
+  }
+  li a:hover, li a.active{
+      background: none;
+      color: red;
+  }
+  #check:checked ~ ul{
+      left:0;
+  }
+}
+
+#boton{
+  height: 30px;
+}
+
+
+
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    font-family: "Public Sans", sans-serif;
+    font-size: 1.2rem;
+    min-height: 100%;
+    background-color: #e7a219;
+  }
+  
+  .grid-container > * {
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
+    
+  }
+  
+  .header {
+    grid-area: header;
+    background-color: #07090a;
+  }
+  
+  .navbar {
+    grid-area: navbar;
+    background-color: #0a0a0a;
+    height: 400px;
+  }
+  
+  
+  
+  .main {
+    grid-area: main;
+    background-color: #f5f5f5;
+  }
+  
+  .footer {
+    grid-area: footer;
+    background-color: #fa7a02;
+    height: 600px;
+  }
+
+  
+  
+
+  .grid-container {
+    display: grid;
+    gap: 10px;
+    grid-template:
+      "header"  100px
+      "navbar"  300px
+      "main"    250px
+      
+      "footer"  200px;
+        }
+  
+  @media (min-width: 600px) {
+    .grid-container {
+       grid-template-columns: 200px auto;
+      grid-template-rows: 100px 50px auto 100px;
+      grid-template-areas: 
+      "header  header"
+      "navbar  navbar"
+      "main    main"
+      "footer  footer"; 
+  
+      grid-template:
+        "header  header" 100px
+        "navbar  navbar" 260px
+        "main    main"   200px
+        "footer  footer" 100px /
+        200px    auto;
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .grid-container {
+      grid-template:
+        "header  header header"  100px
+        "navbar  main   main" auto
+        "footer  footer footer"  200px /
+        200px    auto   200px;
+    }
+  }
+   
+ 
+  
+  
+  #foto1{
+    height: 90px;
+  }
+  #foto2{
+    height: 250px;
+  }
+
+
+  #h1{
+    text-align: center;
+    font-size: 25px;
+    color: #fafbfc;
+  }
+  #h2{
+    text-align: center;
+    font-size: 18px;
+    color: #fafbfc;
+  }
+
+  /*formulario*/
+  * {
+    box-sizing: border-box;
+}
+
+body{
+    background: #181818;
+    color: #fff;
+    font-family: 'quicksand', sans-serif;
+    padding: 0 1.5em;
+}
+
+.content {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+}
+
+.logo {
+    text-align: center;
+    fon: 3em;t
+}
+
+.logo spam{
+    color: #b70e21;
+
+}
+
+.contact-wrapper{
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, .3);
+}
+
+.contact-form form button: hover,
+.contact-form form button: focus{
+    background: #d63031;
+    color: #fff;
+}
+.contact-form form button,
+.contact-form form input,
+.contact-form form textarea {
+    width: 100%;
+    padding: .7em;
+    border: none;
+    outline: 0;
+    color: #fff;
+    background: none;
+    border-bottom: 1px solid #d63031;
+}
+
+
+
+.contact-form form button{
+    background: #d63031;
+    border: 0;
+}
+
+    #tiempo{float: right}
+    #logoweb{float: left}
+    #logowhatsapp{float: right}
+    #logofacebook{float: right}
+    #logoinstagram{float: right}
