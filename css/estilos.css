@@ -143,7 +143,7 @@ section{
   
   .main {
     grid-area: main;
-    background-color: #f5f5f5;
+    background-color: #fc8805;
   }
   
   .footer {
@@ -152,8 +152,6 @@ section{
     height: 600px;
   }
 
-  
-  
 
   .grid-container {
     display: grid;
@@ -161,7 +159,7 @@ section{
     grid-template:
       "header"  100px
       "navbar"  300px
-      "main"    250px
+      "main"    150px
       
       "footer"  200px;
         }
@@ -213,8 +211,15 @@ section{
   }
   #h2{
     text-align: center;
-    font-size: 18px;
-    color: #fafbfc;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #f86611;
+  }
+  #pie{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 16px;
+    color: #fffefe;
   }
 
   /*formulario*/
@@ -224,7 +229,7 @@ section{
 
 body{
     background: #181818;
-    color: #fff;
+    color: rgb(8, 8, 8);
     font-family: 'quicksand', sans-serif;
     padding: 0 1.5em;
 }
@@ -270,7 +275,7 @@ body{
 
 
 .contact-form form button{
-    background: #d63031;
+    background: #080606;
     border: 0;
 }
 
@@ -279,3 +284,50 @@ body{
     #logowhatsapp{float: right}
     #logofacebook{float: right}
     #logoinstagram{float: right}
+
+    /*Slider*/
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: lato;
+  }
+  
+  
+  .slider-frame {
+    width: 780px;
+      height: auto;
+    margin:50px auto 0;
+    overflow: hidden;
+  }
+  
+  .slider-frame ul {
+    display: flex;
+    padding: 0;
+    width: 400%;
+    
+    animation: slide 20s infinite alternate ease-in-out;
+  }
+  
+  .slider-frame li {
+    width: 100%;
+    list-style: none;
+  }
+  
+  .slider-frame img {
+    width: 100%;
+  }
+  
+  @keyframes slide {
+    0% {margin-left: 0;}
+    20% {margin-left: 0;}
+    
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+    
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+    
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+  }
+  
