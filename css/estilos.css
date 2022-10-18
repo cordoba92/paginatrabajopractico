@@ -49,24 +49,6 @@ header{
     opacity: 0.6;
 }
 
-.btn__header-register,
-.btn__register-cover{
-    padding: 14px 50px;
-    border: none;
-    background: #000;
-    color: white;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background, color, 300ms;
-}
-
-
-.btn__header-register:hover,
-.btn__register-cover:hover{
-    background: #69F1A1;
-    color: #000;
-}
 
 #icon_menu{
     display: none;
@@ -209,7 +191,7 @@ main{
         font-size: 24px;
     }
 
-    .header__register{
+    .contenedor3{
         display: none;
     }
 
@@ -267,6 +249,9 @@ main{
     .media__cover{
         display: none;
     }
+    .contenedor3{
+        display: none;
+    }
 
     .banner{
         width: 100%;
@@ -314,9 +299,8 @@ main{
   #contenedor3{
     text-align: center;
   }
-  #piedepagina{
-    text-align: center;
-  }
+  
+  
 #formulario{
     text-align: center;
 }
@@ -338,7 +322,7 @@ main{
  
 form {
     margin:0 auto;
-    width:400px;
+    width:300px;
 }
  
 input, textarea {
