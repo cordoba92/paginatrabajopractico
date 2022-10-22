@@ -1,190 +1,63 @@
-const navToggle = document.querySelector(".nav-toggle");
-const navMenu = document.querySelector(".nav-menu");
+const form = document.getElementById('form');
+const usuario = document.getElementById('username');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const password2 = document.getElementById('password2');
 
-navToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("nav-menu_visible");
-
-  if (navMenu.classList.contains("nav-menu_visible")) {
-    navToggle.setAttribute("aria-label", "Cerrar menú");
-  } else {
-    navToggle.setAttribute("aria-label", "Abrir menú");
-  }
+form.addEventListener('submit', e => {
+	e.preventDefault();
+	
+	checkInputs();
 });
 
-
-
-// Variables
-const baseDeDatos = [
-  {
-      id: 1,
-      nombre: 'Patata',
-      precio: 1,
-      imagen: 'patata.jpg'
-  },
-  {
-      id: 2,
-      nombre: 'Cebolla',
-      precio: 1.2,
-      imagen: 'cebolla.jpg'
-  },
-  {
-      id: 3,
-      nombre: 'Calabacin',
-      precio: 2.1,
-      imagen: 'calabacin.jpg'
-  },
-  {
-      id: 4,
-      nombre: 'Fresas',
-      precio: 0.6,
-      imagen: 'fresas.jpg'
-  }
-
-];
-
-let carrito = [];
-const divisa = '$';
-const DOMitems = document.querySelector('#items');
-const DOMcarrito = document.querySelector('#carrito');
-const DOMtotal = document.querySelector('#total');
-const DOMbotonVaciar = document.querySelector('#boton-vaciar');
-
-// Funciones
-
-/**
-* Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
-*/
-function renderizarProductos() {
-  baseDeDatos.forEach((info) => {
-      // Estructura
-      const miNodo = document.createElement('div');
-      miNodo.classList.add('card', 'col-sm-4');
-      // Body
-      const miNodoCardBody = document.createElement('div');
-      miNodoCardBody.classList.add('card-body');
-      // Titulo
-      const miNodoTitle = document.createElement('h5');
-      miNodoTitle.classList.add('card-title');
-      miNodoTitle.textContent = info.nombre;
-      // Imagen
-      const miNodoImagen = document.createElement('img');
-      miNodoImagen.classList.add('img-fluid');
-      miNodoImagen.setAttribute('src', info.imagen);
-      // Precio
-      const miNodoPrecio = document.createElement('p');
-      miNodoPrecio.classList.add('card-text');
-      miNodoPrecio.textContent = `${info.precio}${divisa}`;
-      // Boton 
-      const miNodoBoton = document.createElement('button');
-      miNodoBoton.classList.add('btn', 'btn-primary');
-      miNodoBoton.textContent = '+';
-      miNodoBoton.setAttribute('marcador', info.id);
-      miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
-      // Insertamos
-      miNodoCardBody.appendChild(miNodoImagen);
-      miNodoCardBody.appendChild(miNodoTitle);
-      miNodoCardBody.appendChild(miNodoPrecio);
-      miNodoCardBody.appendChild(miNodoBoton);
-      miNodo.appendChild(miNodoCardBody);
-      DOMitems.appendChild(miNodo);
-  });
+function checkInputs() {
+	
+	const usuarioValue = usuario.value.trim();
+	const emailValue = email.value.trim();
+	const passwordValue = password.value.trim();
+	const password2Value = password2.value.trim();
+	
+	if(usuarioValue === '') {
+		setErrorFor(usuario, 'No puede dejar el usuario en blanco');
+	} else {
+		setSuccessFor(usuario);
+	}
+	
+	if(emailValue === '') {
+		setErrorFor(email, 'No puede dejar el email en blanco');
+	} else if (!isEmail(emailValue)) {
+		setErrorFor(email, 'No ingreso un email válido');
+	} else {
+		setSuccessFor(email);
+	}
+	
+	if(passwordValue === '') {
+		setErrorFor(password, 'Password no debe ingresar en blanco.');
+	} else {
+		setSuccessFor(password);
+	}
+	
+	if(password2Value === '') {
+		setErrorFor(password2, 'Password2 no debe ingresar en blanco');
+	} else if(passwordValue !== password2Value) {
+		setErrorFor(password2, 'Passwords no coinciden');
+	} else{
+		setSuccessFor(password2);
+	}
 }
 
-/**
-* Evento para añadir un producto al carrito de la compra
-*/
-function anyadirProductoAlCarrito(evento) {
-  // Anyadimos el Nodo a nuestro carrito
-  carrito.push(evento.target.getAttribute('marcador'))
-  // Actualizamos el carrito 
-  renderizarCarrito();
-
+function setErrorFor(input, message) {
+	const formControl = input.parentElement;
+	const small = formControl.querySelector('small');
+	formControl.className = 'form-control error';
+	small.innerText = message;
 }
 
-/**
-* Dibuja todos los productos guardados en el carrito
-*/
-function renderizarCarrito() {
-  // Vaciamos todo el html
-  DOMcarrito.textContent = '';
-  // Quitamos los duplicados
-  const carritoSinDuplicados = [...new Set(carrito)];
-  // Generamos los Nodos a partir de carrito
-  carritoSinDuplicados.forEach((item) => {
-      // Obtenemos el item que necesitamos de la variable base de datos
-      const miItem = baseDeDatos.filter((itemBaseDatos) => {
-          // ¿Coincide las id? Solo puede existir un caso
-          return itemBaseDatos.id === parseInt(item);
-      });
-      // Cuenta el número de veces que se repite el producto
-      const numeroUnidadesItem = carrito.reduce((total, itemId) => {
-          // ¿Coincide las id? Incremento el contador, en caso contrario no mantengo
-          return itemId === item ? total += 1 : total;
-      }, 0);
-      // Creamos el nodo del item del carrito
-      const miNodo = document.createElement('li');
-      miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
-      miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
-      // Boton de borrar
-      const miBoton = document.createElement('button');
-      miBoton.classList.add('btn', 'btn-danger', 'mx-5');
-      miBoton.textContent = 'X';
-      miBoton.style.marginLeft = '1rem';
-      miBoton.dataset.item = item;
-      miBoton.addEventListener('click', borrarItemCarrito);
-      // Mezclamos nodos
-      miNodo.appendChild(miBoton);
-      DOMcarrito.appendChild(miNodo);
-  });
-  // Renderizamos el precio total en el HTML
-  DOMtotal.textContent = calcularTotal();
+function setSuccessFor(input) {
+	const formControl = input.parentElement;
+	formControl.className = 'form-control success';
 }
 
-/**
-* Evento para borrar un elemento del carrito
-*/
-function borrarItemCarrito(evento) {
-  // Obtenemos el producto ID que hay en el boton pulsado
-  const id = evento.target.dataset.item;
-  // Borramos todos los productos
-  carrito = carrito.filter((carritoId) => {
-      return carritoId !== id;
-  });
-  // volvemos a renderizar
-  renderizarCarrito();
+function isEmail(email) {
+	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
-
-/**
-* Calcula el precio total teniendo en cuenta los productos repetidos
-*/
-function calcularTotal() {
-  // Recorremos el array del carrito 
-  return carrito.reduce((total, item) => {
-      // De cada elemento obtenemos su precio
-      const miItem = baseDeDatos.filter((itemBaseDatos) => {
-          return itemBaseDatos.id === parseInt(item);
-      });
-      // Los sumamos al total
-      return total + miItem[0].precio;
-  }, 0).toFixed(2);
-}
-
-/**
-* Varia el carrito y vuelve a dibujarlo
-*/
-function vaciarCarrito() {
-  // Limpiamos los productos guardados
-  carrito = [];
-  // Renderizamos los cambios
-  renderizarCarrito();
-}
-
-// Eventos
-DOMbotonVaciar.addEventListener('click', vaciarCarrito);
-
-// Inicio
-renderizarProductos();
-renderizarCarrito();
-
-
-  
